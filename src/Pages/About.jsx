@@ -1,5 +1,5 @@
 import React from "react";
-import { FaCheck, FaChevronRight } from "react-icons/fa6";
+import { FaCheck, FaChevronRight, FaXTwitter } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import { ImQuotesRight } from "react-icons/im";
 import ConFooter from "../Components/ConFooter";
@@ -11,6 +11,10 @@ import Notebook from "../assets/Notebook.svg";
 import Sale from "../assets/Sale.svg";
 import Service from "../assets/Service.svg";
 import Notice from "../assets/Notice.svg";
+import Section4 from "../Sections/Section4";
+import Shape from "../assets/Shape.svg";
+import { FiFacebook } from "react-icons/fi";
+import { GrInstagram, GrLinkedinOption } from "react-icons/gr";
 
 const About = () => {
   const services = [
@@ -50,6 +54,26 @@ const About = () => {
       icon: Finance,
     },
   ];
+
+  const [active1, setActive1] = useState(0);
+
+  const steps = [
+    {
+      step: "01",
+      label: "Business Analysis",
+      title: "Essential Features for Time Management",
+    },
+    {
+      step: "02",
+      label: "Business Strategy",
+      title: "Essential Features for Business Strategy",
+    },
+    {
+      step: "03",
+      label: "Final Execution",
+      title: "Essential Features for Final Execution",
+    },
+  ];
   const [active, setActive] = useState(null);
   return (
     <>
@@ -81,19 +105,19 @@ const About = () => {
         />
       </div>
       {/* Section 2 */}
-      <section className="py-16 lg:py-24 max-w-7xl mx-auto px-4 lg:px-0 flex flex-col lg:flex-row gap-12">
+      <section className="py-16 lg:py-24 max-w-7xl mx-auto px-4 lg:px-0 flex flex-col lg:flex-row gap-12 relative">
         {/* left  */}
         <div className="w-full lg:w-1/2">
           <motion.img
             animate={{ rotate: 360 }}
             transition={{
               repeat: Infinity,
-              duration: 20,
+              duration: 30,
               ease: "linear",
             }}
             src="https://html.kodesolution.com/2025/consultez-html-v2/images/about/about-three-info.png"
             alt=""
-            className="hidden lg:block absolute -top-16 -left-24"
+            className="hidden lg:block absolute top-10 -left-25"
           />
           <img
             src="https://html.kodesolution.com/2025/consultez-html-v2/images/about/about-three-image.jpg"
@@ -105,7 +129,7 @@ const About = () => {
             products. We analyze brands and their offerings, engaging with them
             accordingly. Meanwhile, 51% of consumers..
           </p>
-          <div className="flex items-center py-10">
+          <div className="flex  items-center py-10">
             <Button
               text="More About"
               hoverBg="black"
@@ -113,7 +137,7 @@ const About = () => {
               size="large"
             />
 
-            <div className="relative flex  w-42 -mt-13 ml-3">
+            <div className="hidden mdm:block  relative flex  w-42 -mt-13 ml-3">
               <img
                 src="https://html.kodesolution.com/2025/consultez-html-v2/images/about/about-two-user1.png"
                 alt=""
@@ -135,7 +159,7 @@ const About = () => {
                 className="border-2 border-white w-12 h-12 absolute ml-30 rounded-full"
               />
             </div>
-            <p className="relative font-semibold">
+            <p className="hidden llap:block relative font-semibold">
               10M+ Impact Across the World.
               <img
                 src="https://html.kodesolution.com/2025/consultez-html-v2/images/about/about-two-line.png"
@@ -150,31 +174,33 @@ const About = () => {
           <h1 className="bg-[#c6d936] w-38 font-semibold uppercase text-center rounded-full py-1.5">
             About Us
           </h1>
-          <p className="text-4xl font-bold mt-2 leading-13 pr-25 uppercase">
+          <p className="md:text-4xl text-2xl font-bold mt-2 leading-13 pr-25 uppercase">
             We provide brilliant idea to grow the
-            <span className="text-4xl font-normal px-5 font-serif">
+            <span className="md:text-4xl text-2xl font-normal px-5 font-serif">
               Consulting Agency
             </span>
             Your Sharp Brand
           </p>
 
           <div className="lg:flex mt-10  relative">
-            <div className="lg:w-1/2 w-50 h-50 border border-black/20 lg:h-80 rounded-full text-center flex items-center absolute left-4">
-              <div className="flex flex-col lg:gap-10 gap-5">
-                <h1 className="lg:text-8xl text-5xl font-bold flex justify-center items-center">
-                  15 <span className="text-5xl lg:mt-7">+</span>
+            <div className="lg:w-1/2 md:w-50  md:h-50 w-40 h-40 border border-black/20 lg:h-80 rounded-full text-center flex items-center absolute md:left-4">
+              <div className="flex flex-col lg:gap-3 gap-3">
+                <h1 className="lg:text-8xl text-4xl font-bold flex justify-center items-center">
+                  15{" "}
+                  <span className="lg:text-5xl text-2xl lg:mt-7 mt-2">+</span>
                 </h1>
-                <p className="text-gray-500 lg:text-2xl lg:px-15 px-8">
+                <p className="text-gray-500 lg:text-2xl lg:px-15 px-8 text-[14px] ">
                   Experience Team Help you
                 </p>
               </div>
             </div>
-            <div className="lg:w-1/2 w-50 h-50 border border-black/20 lg:h-80 rounded-full text-center flex items-center absolute right-4">
-              <div className="flex flex-col gap-10 ">
-                <h1 className="lg:text-8xl text-5xl font-bold flex justify-center items-center gap-1">
-                  18 <span className="lg:text-5xl text-3xl lg:mt-7 mt-2">M</span>
+            <div className="lg:w-1/2 md:w-50 md:h-50 w-40 h-40 border border-black/20 lg:h-80 rounded-full text-center flex items-center absolute md:right-4 right-0">
+              <div className="flex flex-col gap-3 ">
+                <h1 className="lg:text-8xl text-4xl font-bold flex justify-center items-center ">
+                  18{" "}
+                  <span className="lg:text-5xl text-2xl lg:mt-7 mt-2">M</span>
                 </h1>
-                <p className="text-gray-500 lg:text-2xl lg:px-15 px-8">
+                <p className="text-gray-500 lg:text-2xl lg:px-15 px-8 text-[14px] ">
                   We helped to get companies
                 </p>
               </div>
@@ -258,6 +284,279 @@ const About = () => {
           </div>
         </div>
       </section>
+      {/* section 4  */}
+      <Section4 />
+      {/* section 5 */}
+      <section className="w-full bg-white">
+        <div className="mx-auto max-w-15xl llap:px-24 px-10 ">
+          <div className="grid grid-cols-1 lap:grid-cols-4  items-center">
+            {/* LEFT CONTENT */}
+            <div className="lap:col-span-1 ">
+              <h2 className="text-4xl font-bold leading-relaxed text-[#0b2c1f] text-center llap:text-left">
+                We Help Real People Do More Business Plan
+              </h2>
+            </div>
+
+            {/* RIGHT STATS */}
+            <div className="lap:col-span-3 grid grid-cols-1 tab:grid-cols-3 llap:ml-30 ">
+              {/* ITEM 1 */}
+              <div className="px-10 tab:border-r border-gray-200 llap:py-20 py-5">
+                <div className=" mb-6">
+                  <img
+                    src="https://html.kodesolution.com/2025/consultez-html-v2/images/shape/funface-four-shape.png"
+                    alt=""
+                  />
+                </div>
+                <h3 className="text-5xl font-extrabold text-[#0b2c1f]">90%</h3>
+                <p className="mt-2 text-[#0b2c1f] font-medium">
+                  Clients Satisfactions
+                </p>
+              </div>
+
+              {/* ITEM 2 */}
+              <div className="px-10 tab:border-r border-gray-200 llap:py-20 py-5">
+                <div className=" mb-6">
+                  <img
+                    src="https://html.kodesolution.com/2025/consultez-html-v2/images/shape/funface-four-shape.png"
+                    alt=""
+                  />
+                </div>
+                <h3 className="text-5xl font-extrabold text-[#0b2c1f]">40%</h3>
+                <p className="mt-2 text-[#0b2c1f] font-medium">
+                  Decrease Expense
+                </p>
+              </div>
+
+              {/* ITEM 3 */}
+              <div className="px-10 llap:py-20 py-5">
+                <div className=" mb-6">
+                  <img
+                    src="https://html.kodesolution.com/2025/consultez-html-v2/images/shape/funface-four-shape.png"
+                    alt=""
+                  />
+                </div>
+                <h3 className="text-5xl font-extrabold text-[#0b2c1f]">7M</h3>
+                <p className="mt-2 text-[#0b2c1f] font-medium">
+                  Money Flow Users
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* section 6 */}
+      <section className="py-24 pb-48 bg-[#fbfbf9]">
+        <div className="max-w-7xl mx-auto px-6">
+          {/* TOP */}
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="inline-block px-8 py-2 rounded-full bg-[#c6d936] text-sm font-semibold tracking-widest">
+              PROCESS
+            </span>
+
+            <h2 className="mt-6 text-4xl font-extrabold text-[#0b2c1f] leading-tight">
+              Ensure The Success Of <br /> Your Business Venture.
+            </h2>
+          </div>
+
+          {/* STEPS */}
+          <div className="relative mt-16">
+            <div className="absolute top-1/2 left-0 w-full h-px bg-gray-200 -z-10" />
+
+            <div className="grid grid-cols-3 text-center">
+              {steps.map((item, i) => (
+                <div
+                  key={i}
+                  onClick={() => setActive1(i)}
+                  className="cursor-pointer">
+                  <p
+                    className={`font-semibold  ${
+                      active === i ? "text-[#0b2c1f]!" : "text-gray-400"
+                    }`}>
+                    {item.label}
+                  </p>
+
+                  <span
+                    className={`mt-2 inline-flex w-9 h-9 items-center justify-center rounded-full font-semibold ${
+                      active === i
+                        ? "bg-[#0b2c1f] text-white"
+                        : "bg-white text-gray-400 shadow"
+                    }`}>
+                    {item.step}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* CONTENT */}
+          <div className="mt-24 grid grid-cols-1 lap:grid-cols-2 gap-20 items-center">
+            {/* LEFT */}
+            <div>
+              <h3 className="text-4xl font-extrabold text-[#0b2c1f]">
+                {steps[active1].title}
+              </h3>
+
+              <p className="mt-6 text-gray-600 leading-relaxed max-w-lg">
+                Sed ut perspiciatis unde omnis iste natus voluptatem accusantium
+                doloremque laudantium totamto aperiame eaque ipsa quae ab illo
+                inventore veritatis.
+              </p>
+
+              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <p className="flex items-center gap-3 font-semibold">
+                  ✓ Optimized Sprint Planning
+                </p>
+                <p className="flex items-center gap-3 font-semibold">
+                  ✓ Incremental Delivery Approach
+                </p>
+                <p className="flex items-center gap-3 font-semibold">
+                  ✓ Continuous Improvement
+                </p>
+                <p className="flex items-center gap-3 font-semibold">
+                  ✓ Delivering Innovative
+                </p>
+              </div>
+            </div>
+
+            {/* RIGHT IMAGE */}
+            <div className="relative flex justify-center">
+              {/* BACKGROUND SHAPE */}
+              <img src={Shape} alt="" className="absolute -top-20 right-2" />
+
+              {/* MAIN IMAGE */}
+              <img
+                src="https://html.kodesolution.com/2025/consultez-html-v2/images/process/image1.jpg"
+                alt=""
+                className="relative z-20 rounded-xl shadow-xl"
+              />
+
+              {/* FLOATING IMAGE */}
+              <img
+                src="https://html.kodesolution.com/2025/consultez-html-v2/images/process/image2.jpg"
+                alt=""
+                className="absolute -bottom-33 right-8 z-30 rounded-2xl shadow-2xl"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* section 7 */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6  ">
+          {/* TOP HEADER */}
+          <div className="flex items-center justify-between mb-14">
+            <div>
+              <span className="inline-block mb-4 px-7 py-2 rounded-full bg-[#c6d936] text-sm font-semibold tracking-wide">
+                TEAM MEMBER
+              </span>
+
+              <h2 className="text-4xl font-extrabold text-[#0b2c1f] leading-tight">
+                The Visionaries Driving <br /> Our Success
+              </h2>
+            </div>
+
+            <Button text="Get Started" size="large" />
+          </div>
+
+          {/* TEAM GRID */}
+          <div className="grid grid-cols-1 tab:grid-cols-2 lap:grid-cols-4 gap-8 z-20 relative">
+            {/* CARD */}
+            {[
+              {
+                img: "https://html.kodesolution.com/2025/consultez-html-v2/images/team/team-three-image1.jpg",
+                name: "Ronald Richards",
+                role: "CEO & Founder",
+              },
+              {
+                img: "https://html.kodesolution.com/2025/consultez-html-v2/images/team/team-three-image2.jpg",
+                name: "Marvin McKinney",
+                role: "Senior Manager",
+              },
+              {
+                img: "https://html.kodesolution.com/2025/consultez-html-v2/images/team/team-three-image3.jpg",
+                name: "Kathryn Murphy",
+                role: "Web Designer",
+              },
+              {
+                img: "https://html.kodesolution.com/2025/consultez-html-v2/images/team/team-three-image4.jpg",
+                name: "Dianne Russell",
+                role: "Junior Manager",
+              },
+            ].map((item, i) => (
+              <div key={i} className="group">
+                {/* IMAGE + HOVER */}
+                <div className="relative overflow-hidden rounded-2xl">
+                  <img
+                    src={item.img}
+                    alt=""
+                    className="w-full h-[360px] object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+
+                  {/* OVERLAY */}
+                  <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+
+                  {/* SOCIAL BAR */}
+                  <div
+                    className="
+                absolute
+                left-1/2
+                -translate-x-1/2
+                bottom-6
+                bg-[#f15a29]
+                rounded-xl
+                px-6
+                py-3
+                flex
+                gap-5
+                text-white
+                opacity-0
+                translate-y-6
+                group-hover:opacity-100
+                group-hover:translate-y-0
+                transition-all
+                duration-500
+              ">
+                    <span className="cursor-pointer double-flip">
+                      <FiFacebook />
+                    </span>
+                    <span className="cursor-pointer double-flip">
+                      <FaXTwitter />
+                    </span>
+                    <span className="cursor-pointer double-flip">
+                      <GrLinkedinOption />
+                    </span>
+                    <span className="cursor-pointer double-flip">
+                      <GrInstagram />
+                    </span>
+                  </div>
+                </div>
+
+                {/* TEXT */}
+                <div className="text-center mt-6">
+                  <h3 className="text-xl font-bold text-[#0b2c1f]">
+                    {item.name}
+                  </h3>
+                  <p className="mt-1 text-sm font-semibold text-gray-500">
+                    {item.role}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <img
+            src="https://html.kodesolution.com/2025/consultez-html-v2/images/shape/team-three-text.png"
+            alt=""
+            className="
+      absolute
+      
+      bottom-[10px]
+      z-0
+      pointer-events-none
+    "
+          />
+        </div>
+      </section>
+
       <ConFooter />
     </>
   );

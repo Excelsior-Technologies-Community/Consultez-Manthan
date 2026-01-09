@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+@theme {
+  --breakpoint-smm: 360px;
+  --breakpoint-mdm: 414px;
+  --breakpoint-lgm: 480px;
+  --breakpoint-tab: 768px;
+  --breakpoint-lap: 1024px;
+  --breakpoint-llap: 1280px;
+  --breakpoint-desk: 1440px;
+}
+
 @layer utilities {
   .double-flip {
     transform-style: preserve-3d;
