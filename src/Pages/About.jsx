@@ -15,6 +15,10 @@ import Section4 from "../Sections/Section4";
 import Shape from "../assets/Shape.svg";
 import { FiFacebook } from "react-icons/fi";
 import { GrInstagram, GrLinkedinOption } from "react-icons/gr";
+import phone from "../assets/phone.svg";
+import mail from "../assets/mail.svg";
+import { MdOutlinePerson } from "react-icons/md";
+import { BsWechat } from "react-icons/bs";
 
 const About = () => {
   const services = [
@@ -54,6 +58,30 @@ const About = () => {
       icon: Finance,
     },
   ];
+  const testimonials = [
+    {
+      text: `Ascend the mountain not to plant your flag, but to embrace the challenge, savour the journey, and marvel at the view. Climb to experience the world, not for the world to notice you. This is why they stand out with exceptional.`,
+      name: "Leslie Alexander",
+      role: "Web Designer",
+    },
+    {
+      text: `Ascend the mountain not to plant your flag, but to embrace the challenge, savour the journey, and marvel at the view. Climb to experience the world, not for the world to notice you. This is why they stand out with exceptional.`,
+      name: "Robert Fox",
+      role: "Product Manager",
+    },
+    {
+      text: `Ascend the mountain not to plant your flag, but to embrace the challenge, savour the journey, and marvel at the view. Climb to experience the world, not for the world to notice you. This is why they stand out with exceptional`,
+      name: "Jenny Wilson",
+      role: "UX Researcher",
+    },
+  ];
+
+  const [index, setIndex] = useState(0);
+
+  const prev = () =>
+    setIndex((i) => (i === 0 ? testimonials.length - 1 : i - 1));
+  const next = () =>
+    setIndex((i) => (i === testimonials.length - 1 ? 0 : i + 1));
 
   const [active1, setActive1] = useState(0);
 
@@ -74,6 +102,24 @@ const About = () => {
       title: "Essential Features for Final Execution",
     },
   ];
+  const blogs = [
+    {
+      img: "https://html.kodesolution.com/2025/consultez-html-v2/images/blog/blog-two-image1.jpg",
+      date: "15 December,2025",
+      title: "We Focus On The Solutions Not On The Problems",
+    },
+    {
+      img: "https://html.kodesolution.com/2025/consultez-html-v2/images/blog/blog-two-image2.jpg",
+      date: "20 December,2025",
+      title: "How To Create Viral Content That Drives Sales",
+    },
+    {
+      img: "https://html.kodesolution.com/2025/consultez-html-v2/images/blog/blog-two-image3.jpg",
+      date: "31 December,2025",
+      title: "How AI Is Changing The Future Of Online Shopping",
+    },
+  ];
+
   const [active, setActive] = useState(null);
   return (
     <>
@@ -441,7 +487,7 @@ const About = () => {
         </div>
       </section>
       {/* section 7 */}
-      <section className="py-24 bg-white">
+      <section className="py-24 relative bg-white">
         <div className="max-w-7xl mx-auto px-6  ">
           {/* TOP HEADER */}
           <div className="flex items-center justify-between mb-14">
@@ -547,13 +593,329 @@ const About = () => {
             src="https://html.kodesolution.com/2025/consultez-html-v2/images/shape/team-three-text.png"
             alt=""
             className="
-      absolute
-      
-      bottom-[10px]
-      z-0
-      pointer-events-none
-    "
+            absolute            
+            bottom-0 -left-5
+            z-0
+            pointer-events-none  
+          "
           />
+        </div>
+      </section>
+      {/* section 8 */}
+      <section className="bg-gray-100 py-16 lg:py-20">
+        <div
+          className="
+    relative mx-auto flex w-full max-w-full
+    flex-col lg:flex-row
+    overflow-hidden bg-[#173f35]
+    lg:h-[650px]
+  ">
+          {/* LEFT — STATIC */}
+          <div
+            className="
+      relative w-full lg:w-[45%]
+      h-[420px] sm:h-[480px] lg:h-auto
+    ">
+            {/* Green shape */}
+            <div
+              className="
+        absolute left-1/2 bottom-0
+        h-[360px] w-[320px]
+        sm:h-[420px] sm:w-[380px]
+        lg:left-20 lg:h-[500px] lg:w-[460px]
+        -translate-x-1/2 lg:translate-x-0
+        rounded-t-full bg-[#c9dc3c]
+      "
+            />
+
+            {/* Floating image 1 */}
+            <motion.img
+              src="https://html.kodesolution.com/2025/consultez-html-v2/images/testimonial/testimonial-two-info1.png"
+              className="hidden llap:block
+          absolute left-4 top-32
+          sm:left-10 sm:top-40
+          lg:-left-18 lg:top-60
+          z-20 w-[120px] sm:w-[260px]
+        "
+              animate={{ y: [0, -30, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            />
+
+            {/* Person */}
+            <img
+              src="https://html.kodesolution.com/2025/consultez-html-v2/images/testimonial/testimonial-two-image.png"
+              className="
+          absolute bottom-0 left-1/2
+          h-[360px] sm:h-[420px]
+          lg:left-36 lg:h-[570px]
+          -translate-x-1/2 lg:translate-x-0
+          z-10
+        "
+              alt="person"
+            />
+
+            {/* Floating image 2 */}
+            <motion.img
+              src="https://html.kodesolution.com/2025/consultez-html-v2/images/testimonial/testimonial-two-info2.png"
+              className=" hidden llap:block
+          absolute right-4 bottom-6
+          sm:right-12 sm:bottom-10
+          lg:left-90 lg:-bottom-18
+          z-20 w-[180px] sm:w-[240px] lg:w-[320px]
+        "
+              animate={{ x: [0, -30, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </div>
+
+          {/* RIGHT — SLIDER */}
+          <div
+            className="
+      relative w-full lg:w-[55%]
+      px-6 sm:px-10 
+      py-12 lg:py-20
+      text-white overflow-hidden 
+    ">
+            {/* Slides */}
+            <div
+              className="flex transition-transform duration-500 "
+              style={{ transform: `translateX(-${index * 100}%)` }}>
+              {testimonials.map((item, i) => (
+                <div key={i} className="min-w-full">
+                  <div
+                    className="
+              mb-6 flex items-center gap-2
+              text-2xl sm:text-3xl lg:text-5xl
+              font-semibold px-10
+            ">
+                    <span className="text-[#00b67a]">★</span>
+                    Trustpilot
+                  </div>
+
+                  <p
+                    className="
+              mb-8 leading-relaxed opacity-90
+              text-lg sm:text-xl lg:text-3xl px-10
+            ">
+                    {item.text}
+                  </p>
+
+                  <div className="my-6 h-px w-full bg-white/30" />
+
+                  <div className="flex items-center justify-between px-10">
+                    <div>
+                      <h4 className="text-lg font-semibold">{item.name}</h4>
+                      <span className="text-sm opacity-70">{item.role}</span>
+                    </div>
+                    <div className="text-lg sm:text-xl text-[#ffb400]">
+                      ★★★★★
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Controls */}
+            <div
+              className="
+        absolute right-78 bottom-6
+        lg:right-16 lg:top-20 lg:bottom-auto
+        flex gap-3
+      ">
+              <button
+                onClick={prev}
+                className="h-12 w-12 sm:h-14 sm:w-14 rounded-full border border-white/30 hover:bg-white/10 ">
+                ‹
+              </button>
+              <button
+                onClick={next}
+                className="h-12 w-12 sm:h-14 sm:w-14 rounded-full border border-white/30 hover:bg-white/10 ">
+                ›
+              </button>
+            </div>
+          </div>
+
+          {/* Rotating decoration (desktop only) */}
+          <motion.img
+            src="https://html.kodesolution.com/2025/consultez-html-v2/images/shape/dual-circle420.png"
+            className="hidden lg:block absolute -right-40 bottom-0"
+            animate={{ rotate: 360 }}
+            transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+          />
+        </div>
+      </section>
+      {/* section 9 */}
+      <section className="bg-[#f7f4ef] py-16 sm:py-20 relative overflow-hidden">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 ">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start ">
+            {/* LEFT CONTENT */}
+            <div>
+              <span className="inline-block rounded-full bg-[#c9dc3c] px-6 py-2 text-sm font-semibold tracking-wide text-black">
+                CONTACT US
+              </span>
+
+              <h2 className="mt-6 text-4xl sm:text-5xl font-bold text-[#0b2c1f]">
+                Let’s Work Together
+              </h2>
+
+              <p className="mt-6 max-w-xl text-lg text-gray-600">
+                We condemn with rightful anger and, like those who have been
+                misled and corrupted by allurement.
+              </p>
+
+              {/* Contact Info */}
+              <div className="mt-10 space-y-8">
+                <div className="flex items-start gap-5">
+                  <div className="flex h-18 w-18 items-center justify-center rounded-full bg-white shadow">
+                    <img src={phone} alt="" className="w-10" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-[#0b2c1f]">
+                      Call For Inquiry
+                    </p>
+                    <p className="text-lg font-bold text-[#0b2c1f]">
+                      +00 (002) 896 22
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-5 llap:mb-34">
+                  <div className="flex h-18 w-18 items-center justify-center rounded-full bg-white shadow">
+                    <img src={mail} alt="" className="w-10" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-[#0b2c1f]">
+                      Send Us Email
+                    </p>
+                    <p className="text-lg font-bold text-[#0b2c1f]">
+                      theme@gmail.com
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* RIGHT FORM */}
+            <div className="rounded-xl bg-white p-8 sm:p-10 shadow-lg llap:absolute right-20 z-10">
+              <h3 className="text-2xl sm:text-3xl font-bold text-[#0b2c1f]">
+                Need Help For Project!
+              </h3>
+              <p className="mt-2 text-gray-600">
+                Let’s collaborate and create something amazing together!
+              </p>
+
+              <form className="mt-8 space-y-6">
+                {/* Row */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    className="w-full rounded-lg border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#c9dc3c]"
+                  />
+                  <input
+                    type="email"
+                    placeholder="Email Address"
+                    className="w-full rounded-lg border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#c9dc3c]"
+                  />
+                </div>
+
+                <select className="w-full rounded-lg border border-gray-200 px-4 py-3 text-gray-600 focus:outline-none focus:ring-2 focus:ring-[#c9dc3c]">
+                  <option>Choose Our Service</option>
+                  <option>Web Designer</option>
+                  <option>UI/UX Designing</option>
+                  <option>Market Manager</option>
+                  <option>Web Developer</option>
+                  <option>Finance Advice</option>
+                </select>
+
+                <textarea
+                  rows="4"
+                  placeholder="Write a Message"
+                  className="w-full rounded-lg border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#c9dc3c]"
+                />
+
+                <Button
+                  text="Send Message Us"
+                  bgColor="#173f35"
+                  textColor="white"
+                  hoverBg="gray"
+                  hoverOpacity="0.2"
+                />
+              </form>
+            </div>
+            <img
+              src="https://html.kodesolution.com/2025/consultez-html-v2/images/contact/contact-image.png"
+              alt=""
+              className="absolute right-5 z-0 hidden llap:block"
+            />
+          </div>
+        </div>
+      </section>
+      {/* section 10 */}
+      <section className="bg-white py-16 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          {/* HEADER */}
+          <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <span className="inline-block rounded-full bg-[#c9dc3c] px-6 py-2 text-sm font-semibold tracking-wide text-black">
+                NEW & BLOGS
+              </span>
+
+              <h2 className="mt-6 max-w-xl text-4xl sm:text-5xl font-bold text-[#0b2c1f] leading-tight">
+                Read All Our Consulting <br /> News & Blogs
+              </h2>
+            </div>
+
+            <div className="border rounded-full">
+              <Button
+                text="Contact Us"
+                bgColor="white"
+                hoverBg="black"
+                hoverOpacity="0.1"
+                size="large"
+              />
+            </div>
+          </div>
+
+          {/* BLOG GRID */}
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {blogs.map((blog, i) => (
+              <div
+                key={i}
+                className="group rounded-2xl bg-white shadow-sm hover:shadow-lg transition">
+                {/* IMAGE */}
+                <div className="relative overflow-hidden rounded-t-2xl">
+                  <img
+                    src={blog.img}
+                    alt=""
+                    className="h-[240px] w-full object-cover transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-1"
+                  />
+
+                  {/* DATE */}
+                  <span className="absolute right-4 top-4 rounded-md bg-[#173f35] px-4 py-2 text-sm font-semibold text-white">
+                    {blog.date}
+                  </span>
+                </div>
+
+                {/* CONTENT */}
+                <div className="p-6">
+                  {/* META */}
+                  <div className="mb-4 flex items-center gap-4 text-sm text-gray-500">
+                    <span className="flex gap-1 items-center"><MdOutlinePerson /> By admin</span>
+                    <span className="flex gap-1 items-center"><BsWechat /> Comments (05)</span>
+                  </div>
+
+                  <h3 className="mb-6 text-xl font-semibold leading-snug text-[#0b2c1f]">
+                    {blog.title}
+                  </h3>
+
+                  <button className="inline-flex items-center gap-2 rounded-full bg-[#c9dc3c] px-6 py-3 text-sm font-semibold text-black hover:bg-[#b6cc34] transition">
+                    Read More →
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
