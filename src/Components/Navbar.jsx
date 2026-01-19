@@ -80,12 +80,12 @@ const Navbar = () => {
 >
         <div className="md:w-[94%] md:h-[100px] items-center mx-auto  py-2 flex justify-between font-medium text-[16px]">
           {/* logo  */}
-          <div>
+          <Link to={"/"}>
             <img
               src="https://html.kodesolution.com/2025/consultez-html-v2/images/logo.png"
               alt=""
             />
-          </div>
+          </Link>
           <nav>
             {/* <CgMenuRound /> */}
             <MobileMenu />
@@ -237,10 +237,10 @@ const Navbar = () => {
                         About
                       </span>
                     </Link>
-                    <Link className="border-b border-gray-300 py-1.5  px-8">
+                    <Link to={"/faqs"} className="border-b border-gray-300 py-1.5  px-8">
                       <span className="ml-0 hover:ml-1 duration-300">Faqs</span>
                     </Link>
-                    <Link className="border-b border-gray-300 py-1.5  px-8">
+                    <Link to={"/pricing"} className="border-b border-gray-300 py-1.5  px-8">
                       <span className="ml-0 hover:ml-1 duration-300">
                         Pricing
                       </span>
@@ -248,12 +248,12 @@ const Navbar = () => {
                     <div className="group/a1 pb-2  relative border-b border-gray-300">
                       <Link className=" px-8">Team</Link>
                       <div className="opacity-0 scale-x-0 origin-left transition-all ease-out duration-700 group-hover/a1:scale-x-100 group-hover/a1:opacity-100 z-50 w-[200px] flex flex-col gap-4 absolute bg-white shadow-lg -top-2 left-full mt-0 ">
-                        <Link className="border-b border-gray-300 pb-2 pt-2 px-8">
+                        <Link to={"/teamlist"} className="border-b border-gray-300 pb-2 pt-2 px-8">
                           <span className="ml-0 hover:ml-1 duration-300">
                             Team List
                           </span>
                         </Link>
-                        <Link className="border-b border-gray-300 pb-2  px-8">
+                        <Link  to={"/teamdetails"} className="border-b border-gray-300 pb-2  px-8">
                           <span className="ml-0 hover:ml-1 duration-300">
                             Team Details
                           </span>
@@ -263,12 +263,12 @@ const Navbar = () => {
                     <div className="group/a1 pb-2  relative border-b border-gray-300">
                       <Link className=" px-8">Shop</Link>
                       <div className="opacity-0 scale-x-0 origin-left transition-all ease-out duration-700 group-hover/a1:scale-x-100 group-hover/a1:opacity-100 z-50 w-[210px] flex flex-col gap-4 absolute bg-white shadow-lg -top-2 left-full mt-0 ">
-                        <Link className="border-b border-gray-300 pb-2 pt-2 px-8">
+                        <Link to={"/products"} className="border-b border-gray-300 pb-2 pt-2 px-8">
                           <span className="ml-0 hover:ml-1 duration-300">
-                            Product
+                            Products
                           </span>
                         </Link>
-                        <Link className="border-b border-gray-300 pb-2  px-8">
+                        <Link to={"/productsidebar"} className="border-b border-gray-300 pb-2  px-8">
                           <span className="ml-0 hover:ml-1 duration-300">
                             Product With Sidebar
                           </span>
@@ -324,7 +324,7 @@ const Navbar = () => {
                     Portfolio <IoMdArrowDropdown />
                   </span>
                   <div className="opacity-0 scale-y-0 origin-top transition-all ease-out duration-700 group-hover:scale-y-100 group-hover:opacity-100 z-50 w-[200px] flex flex-col gap-4 absolute bg-white shadow-lg mt-2 pt-4 top-4">
-                    <Link className="border-b border-gray-300 pb-2  px-6">
+                    <Link to={"/portfolio"} className="border-b border-gray-300 pb-2  px-6">
                       <span className="ml-0 hover:ml-1 duration-300">
                         Portfolio
                       </span>
