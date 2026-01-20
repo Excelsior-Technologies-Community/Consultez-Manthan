@@ -273,7 +273,7 @@ const Navbar = () => {
                             Product With Sidebar
                           </span>
                         </Link>
-                        <Link className="border-b border-gray-300 pb-2  px-8">
+                        <Link to={"/productdetails"} className="border-b border-gray-300 pb-2  px-8">
                           <span className="ml-0 hover:ml-1 duration-300">
                             Product Details
                           </span>

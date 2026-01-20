@@ -12,6 +12,7 @@ import TeamDetails from "./Pages/TeamDetails";
 import Portfolio from "./Pages/Portfolio";
 import Products from "./Pages/Products";
 import ProductSidebar from "./Pages/ProductSidebar";
+import ProductDetails from "./Pages/ProductDetails";
  
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
             <Route path="/portfolio" element={<Portfolio/>}/>
             <Route path="/products" element={<Products/>}/>
             <Route path="/productsidebar" element={<ProductSidebar/>}/>
+            <Route path="/productdetails" element={<ProductDetails/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
