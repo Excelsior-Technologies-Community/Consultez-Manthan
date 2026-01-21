@@ -30,17 +30,18 @@ const MainFooter = () => {
         className="absolute w-17 h-40 bottom-0 bg-white/20"
       />
 
-      <motion.div 
-      initial={{ x: -80, opacity: 0 }}
+      <motion.div
+        initial={{ x: -80, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{
           duration: 0.8,
           ease: "easeOut",
         }}
         viewport={{ once: true, amount: 0.3 }}
-      className="absolute w-40 h-17 bottom-0 bg-white/20" />
+        className="absolute w-40 h-17 bottom-0 bg-white/20"
+      />
       {/* ===== CTA BOX ===== */}
-      <div className="max-w-[1350px] mx-auto px-6 translate-y-24">
+      <div className="max-w-[1350px] mx-auto px-6 pt-12 flex flex-col md:flex-row justify-between gap-10">
         <div className="bg-[#c6d936] rounded-2xl p-12 grid md:grid-cols-2 gap-10 items-center relative">
           <div>
             <h2 className="text-4xl font-bold text-[#0e2e25] leading-tight">
@@ -54,7 +55,7 @@ const MainFooter = () => {
           <motion.img
             src="https://html.kodesolution.com/2025/consultez-html-v2/images/shape/cta-arry.png"
             alt=""
-            className="absolute left-1/2"
+            className="absolute left-1/2 opacity-0 tab:opacity-100"
             animate={{ x: [0, -35, 0] }} // smooth float effect
             transition={{
               duration: 3,
@@ -63,26 +64,26 @@ const MainFooter = () => {
             }}
           />
           <div className="text-right pr-18 ">
-            <button className="bg-white text-[#0e2e25] font-semibold flex items-center px-12 py-4 z-10 top-20 right-31 rounded-xl  transition group absolute">
+            <button className="bg-white text-[#0e2e25] font-semibold flex items-center px-12 py-4 z-10 tab:top-20 tab:right-31 rounded-xl  transition group absolute">
               Get Started Free{" "}
               <FiArrowUpRight className="group-hover:rotate-45 duration-300 text-xl" />
             </button>
-            <p className="text-md text-[#1a4137] mt-15 pr-7 font-semibold">
+            <p className="text-md text-[#1a4137] mt-15 pr-7 font-semibold ">
               No credit card required
             </p>
           </div>
           <img
             src="https://html.kodesolution.com/2025/consultez-html-v2/images/shape/cta-line.png"
             alt=""
-            className="absolute right-0 z-0"
+            className="absolute right-0 z-0 opacity-0 tab:opacity-100"
           />
         </div>
       </div>
 
       {/* ===== MAIN FOOTER ===== */}
-      <div className="max-w-[1350px] mx-auto px-6 pt-32 pb-16 flex justify-between gap-2 ">
+      <div className="max-w-[1350px] mx-auto px-6 pt-12 pb-16 flex flex-col md:flex-row justify-between gap-2 ">
         {/* Brand */}
-        <div className="w-[30%]">
+        <div className="w-full md:w-[30%] mb-8 md:mb-0">
           <img
             src="https://html.kodesolution.com/2025/consultez-html-v2/images/logo-light.png"
             alt=""
@@ -92,7 +93,7 @@ const MainFooter = () => {
             At vero eos et accusamus iusto odio dignissimos ducimus blanditiis.
           </p>
 
-          <div className="flex bg-white rounded-lg  w-[80%] py-0.5 px-3">
+          <div className="flex bg-white rounded-lg w-full md:w-[80%] py-0.5 px-3">
             <input
               type="email"
               placeholder="Email Address"
@@ -105,7 +106,7 @@ const MainFooter = () => {
         </div>
 
         {/* Resource */}
-        <div className="w-[17%]">
+        <div className="flex-1 mb-8 md:mb-0">
           <h4 className="font-semibold mb-4 text-2xl ">Resource</h4>
           <div className="flex flex-col gap-2 text-gray-200">
             <Link>Product</Link>
@@ -116,7 +117,7 @@ const MainFooter = () => {
         </div>
 
         {/* Quick Link */}
-        <div className="w-[17%]">
+        <div className="flex-1 mb-8 md:mb-0">
           <h4 className="font-semibold mb-4 text-2xl">Quick Link</h4>
           <div className="flex flex-col gap-2 text-gray-200">
             <Link>Features</Link>
@@ -127,7 +128,7 @@ const MainFooter = () => {
         </div>
 
         {/* Company */}
-        <div className="w-[17%]">
+        <div className="flex-1 mb-8 md:mb-0">
           <h4 className="font-semibold mb-4 text-2xl">Company</h4>
           <div className="flex flex-col gap-2 text-gray-200">
             <Link>About</Link>
@@ -138,7 +139,7 @@ const MainFooter = () => {
         </div>
 
         {/* Contact */}
-        <div className=" ml-5">
+        <div className="flex-1">
           <h4 className="font-semibold text-2xl mb-4">Contact</h4>
           <ul className="space-y-4 text-gray-300">
             <li className="flex gap-3">
@@ -159,7 +160,7 @@ const MainFooter = () => {
 
       {/* ===== BOTTOM BAR ===== */}
       <div className="border-t border-white/10">
-        <div className="max-w-[1350px] mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
+        <div className="max-w-[1350px] mx-auto px-4 gap-3 py-6 flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
           <p>Copyright ©2025, Design All Rights Reserved</p>
           <div className="flex gap-6">
             <span>Faqs</span>
@@ -173,7 +174,7 @@ const MainFooter = () => {
       {/* ===== SCROLL TO TOP ===== */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="absolute left-180  bottom-10 bg-[#c6d936] text-black w-14 h-14 rounded-xl flex items-center justify-center text-2xl hover:text-3xl duration-300">
+        className="opacity-0 tab:opacity-100 absolute left-4 md:left-180 bottom-10 bg-[#c6d936] text-black w-14 h-14 rounded-xl flex items-center justify-center text-2xl hover:text-3xl duration-300">
         <FaAngleDoubleUp />
       </button>
     </footer>

@@ -13,7 +13,8 @@ import Portfolio from "./Pages/Portfolio";
 import Products from "./Pages/Products";
 import ProductSidebar from "./Pages/ProductSidebar";
 import ProductDetails from "./Pages/ProductDetails";
- 
+import Cart from "./Pages/Cart";
+
 const App = () => {
   return (
     <>
@@ -24,14 +25,15 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/" element={<Layout />}>
             <Route path="/testi" element={<Testi />} />
-            <Route path="/pricing" element={<Pricing/>}/>
-            <Route path="/faqs" element={<Faqs/>}/>
-            <Route path="/teamlist" element={<TeamList/>}/>
-            <Route path="/teamdetails" element={<TeamDetails/>}/>
-            <Route path="/portfolio" element={<Portfolio/>}/>
-            <Route path="/products" element={<Products/>}/>
-            <Route path="/productsidebar" element={<ProductSidebar/>}/>
-            <Route path="/productdetails" element={<ProductDetails/>}/>
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/faqs" element={<Faqs />} />
+            <Route path="/teamlist" element={<TeamList />} />
+            <Route path="/teamdetails" element={<TeamDetails />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/productsidebar" element={<ProductSidebar />} />
+            <Route path="/productdetails" element={<ProductDetails />} />
+            <Route path="/cart" element={<Cart />} />
           </Route>
         </Routes>
       </BrowserRouter>
