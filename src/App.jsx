@@ -14,6 +14,9 @@ import Products from "./Pages/Products";
 import ProductSidebar from "./Pages/ProductSidebar";
 import ProductDetails from "./Pages/ProductDetails";
 import Cart from "./Pages/Cart";
+import Services from "./Pages/Services";
+import Checkout from "./Pages/Checkout";
+import NotFound from "./Pages/NotFound";
 
 const App = () => {
   return (
@@ -21,6 +24,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="notfound" element={<NotFound/>}/>
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/" element={<Layout />}>
@@ -34,6 +38,8 @@ const App = () => {
             <Route path="/productsidebar" element={<ProductSidebar />} />
             <Route path="/productdetails" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/services" element={<Services/>}/>
+            <Route path="/checkout" element={<Checkout/>}/> 
           </Route>
         </Routes>
       </BrowserRouter>
