@@ -311,7 +311,7 @@ const Navbar = () => {
                         Services
                       </span>
                     </Link>
-                    <Link  className="border-b border-gray-300 py-1.5  px-6">
+                    <Link  to={"/servicedetails"} className="border-b border-gray-300 py-1.5  px-6">
                       <span className="ml-0 hover:ml-1 duration-300">
                         Services Details
                       </span>
@@ -329,7 +329,7 @@ const Navbar = () => {
                         Portfolio
                       </span>
                     </Link>
-                    <Link className="border-b border-gray-300 py-1.5  px-6">
+                    <Link to={"/portfoliodetails"} className="border-b border-gray-300 py-1.5  px-6">
                       <span className="ml-0 hover:ml-1 duration-300">
                         Portfolio Details
                       </span>

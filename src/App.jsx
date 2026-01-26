@@ -18,6 +18,8 @@ import Services from "./Pages/Services";
 import Checkout from "./Pages/Checkout";
 import NotFound from "./Pages/NotFound";
 import ServiceDetails from "./Pages/ServiceDetails";
+import Portfoliodetails from "./Pages/Portfoliodetails";
+import NewsGrid from "./Pages/NewsGrid";
 
 const App = () => {
   return (
@@ -42,6 +44,7 @@ const App = () => {
             <Route path="/services" element={<Services/>}/>
             <Route path="/checkout" element={<Checkout/>}/> 
             <Route path="/servicedetails" element={<ServiceDetails/>}/>
+            <Route path="portfoliodetails" element={<Portfoliodetails/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
