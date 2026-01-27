@@ -342,12 +342,12 @@ const Navbar = () => {
                     News <IoMdArrowDropdown />
                   </span>
                   <div className="opacity-0 scale-y-0 origin-top transition-all ease-out duration-700 group-hover:scale-y-100 group-hover:opacity-100 z-50 w-[200px] flex flex-col gap-4 absolute bg-white shadow-lg mt-2 pt-4 top-4">
-                    <Link className="border-b border-gray-300 pb-2  px-6">
+                    <Link to={"/newsgrid"} className="border-b border-gray-300 pb-2  px-6">
                       <span className="ml-0 hover:ml-1 duration-300">
                         News Grid
                       </span>
                     </Link>
-                    <Link className="border-b border-gray-300 py-1.5  px-6">
+                    <Link to={"/newsdetails"} className="border-b border-gray-300 py-1.5  px-6">
                       <span className="ml-0 hover:ml-1 duration-300">
                         NewsDetails
                       </span>
