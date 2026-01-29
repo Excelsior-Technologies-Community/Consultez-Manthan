@@ -7,6 +7,6 @@ import {
 const router = express.Router();
 
 router.get("/", getCategories);
-router.post("/", createCategory); 
+router.post("/", createCategory); // 👈 THIS IS REQUIRED
 
 export default router;

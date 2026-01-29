@@ -9,6 +9,7 @@ import { GrInstagram, GrLinkedinOption } from "react-icons/gr";
 import { FaXTwitter } from "react-icons/fa6";
 import Button from "./Small Components/Button";
 import { useEffect, useState } from "react";
+import { CgProfile } from "react-icons/cg";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -21,6 +22,8 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const user = JSON.parse(localStorage.getItem("user"));
 
   return (
     <>
@@ -71,13 +74,10 @@ const Navbar = () => {
         </div>
       )}
       {/* navbar  */}
-     <div
-  className={`w-full z-50 transition-all duration-500 ease-in-out ${
-    scrolled
-      ? "fixed top-0 left-0 bg-white shadow-md"
-      : "relative"
-  }`}
->
+      <div
+        className={`w-full z-50 transition-all duration-500 ease-in-out ${
+          scrolled ? "fixed top-0 left-0 bg-white shadow-md" : "relative"
+        }`}>
         <div className="md:w-[94%] md:h-[100px] items-center mx-auto  py-2 flex justify-between font-medium text-[16px]">
           {/* logo  */}
           <Link to={"/"}>
@@ -232,15 +232,21 @@ const Navbar = () => {
                     Pages <IoMdArrowDropdown />
                   </span>
                   <div className=" w-[200px] font-medium text-[14px] opacity-0 scale-y-0 origin-top transition-all ease-out duration-700 group-hover:scale-y-100 group-hover:opacity-100 z-50 flex flex-col gap-4 absolute bg-white shadow-lg mt-2 pt-4 top-4">
-                    <Link to={"/about"} className="border-b border-gray-300 py-1.5  px-8">
+                    <Link
+                      to={"/about"}
+                      className="border-b border-gray-300 py-1.5  px-8">
                       <span className="ml-0 hover:ml-1 duration-300">
                         About
                       </span>
                     </Link>
-                    <Link to={"/faqs"} className="border-b border-gray-300 py-1.5  px-8">
+                    <Link
+                      to={"/faqs"}
+                      className="border-b border-gray-300 py-1.5  px-8">
                       <span className="ml-0 hover:ml-1 duration-300">Faqs</span>
                     </Link>
-                    <Link to={"/pricing"} className="border-b border-gray-300 py-1.5  px-8">
+                    <Link
+                      to={"/pricing"}
+                      className="border-b border-gray-300 py-1.5  px-8">
                       <span className="ml-0 hover:ml-1 duration-300">
                         Pricing
                       </span>
@@ -248,12 +254,16 @@ const Navbar = () => {
                     <div className="group/a1 pb-2  relative border-b border-gray-300">
                       <Link className=" px-8">Team</Link>
                       <div className="opacity-0 scale-x-0 origin-left transition-all ease-out duration-700 group-hover/a1:scale-x-100 group-hover/a1:opacity-100 z-50 w-[200px] flex flex-col gap-4 absolute bg-white shadow-lg -top-2 left-full mt-0 ">
-                        <Link to={"/teamlist"} className="border-b border-gray-300 pb-2 pt-2 px-8">
+                        <Link
+                          to={"/teamlist"}
+                          className="border-b border-gray-300 pb-2 pt-2 px-8">
                           <span className="ml-0 hover:ml-1 duration-300">
                             Team List
                           </span>
                         </Link>
-                        <Link  to={"/teamdetails"} className="border-b border-gray-300 pb-2  px-8">
+                        <Link
+                          to={"/teamdetails"}
+                          className="border-b border-gray-300 pb-2  px-8">
                           <span className="ml-0 hover:ml-1 duration-300">
                             Team Details
                           </span>
@@ -263,39 +273,53 @@ const Navbar = () => {
                     <div className="group/a1 pb-2  relative border-b border-gray-300">
                       <Link className=" px-8">Shop</Link>
                       <div className="opacity-0 scale-x-0 origin-left transition-all ease-out duration-700 group-hover/a1:scale-x-100 group-hover/a1:opacity-100 z-50 w-[210px] flex flex-col gap-4 absolute bg-white shadow-lg -top-2 left-full mt-0 ">
-                        <Link to={"/products"} className="border-b border-gray-300 pb-2 pt-2 px-8">
+                        <Link
+                          to={"/products"}
+                          className="border-b border-gray-300 pb-2 pt-2 px-8">
                           <span className="ml-0 hover:ml-1 duration-300">
                             Products
                           </span>
                         </Link>
-                        <Link to={"/productsidebar"} className="border-b border-gray-300 pb-2  px-8">
+                        <Link
+                          to={"/productsidebar"}
+                          className="border-b border-gray-300 pb-2  px-8">
                           <span className="ml-0 hover:ml-1 duration-300">
                             Product With Sidebar
                           </span>
                         </Link>
-                        <Link to={"/productdetails"} className="border-b border-gray-300 pb-2  px-8">
+                        <Link
+                          to={"/productdetails"}
+                          className="border-b border-gray-300 pb-2  px-8">
                           <span className="ml-0 hover:ml-1 duration-300">
                             Product Details
                           </span>
                         </Link>
-                        <Link to={"/cart"} className="border-b border-gray-300 pb-2  px-8">
+                        <Link
+                          to={"/cart"}
+                          className="border-b border-gray-300 pb-2  px-8">
                           <span className="ml-0 hover:ml-1 duration-300">
                             Cart
                           </span>
                         </Link>
-                        <Link to={"/checkout"} className="border-b border-gray-300 pb-2  px-8">
+                        <Link
+                          to={"/checkout"}
+                          className="border-b border-gray-300 pb-2  px-8">
                           <span className="ml-0 hover:ml-1 duration-300">
                             Checkout
                           </span>
                         </Link>
                       </div>
                     </div>
-                    <Link to={"/testi"} className="border-b border-gray-300 pb-2  px-8">
+                    <Link
+                      to={"/testi"}
+                      className="border-b border-gray-300 pb-2  px-8">
                       <span className="ml-0 hover:ml-1 duration-300">
                         Testimonial
                       </span>
                     </Link>
-                    <Link to={"/notfound"} className="border-b border-gray-300 py-1.5  px-8">
+                    <Link
+                      to={"/notfound"}
+                      className="border-b border-gray-300 py-1.5  px-8">
                       <span className="ml-0 hover:ml-1 duration-300">404</span>
                     </Link>
                   </div>
@@ -306,12 +330,16 @@ const Navbar = () => {
                     Services <IoMdArrowDropdown />
                   </span>
                   <div className="opacity-0 scale-y-0 origin-top transition-all ease-out duration-700 group-hover:scale-y-100 group-hover:opacity-100 z-50 w-[200px] flex flex-col gap-4 absolute bg-white shadow-lg mt-2 pt-4 top-4">
-                    <Link to={"/services"} className="border-b border-gray-300 pb-2  px-6">
+                    <Link
+                      to={"/services"}
+                      className="border-b border-gray-300 pb-2  px-6">
                       <span className="ml-0 hover:ml-1 duration-300">
                         Services
                       </span>
                     </Link>
-                    <Link  to={"/servicedetails"} className="border-b border-gray-300 py-1.5  px-6">
+                    <Link
+                      to={"/servicedetails"}
+                      className="border-b border-gray-300 py-1.5  px-6">
                       <span className="ml-0 hover:ml-1 duration-300">
                         Services Details
                       </span>
@@ -324,12 +352,16 @@ const Navbar = () => {
                     Portfolio <IoMdArrowDropdown />
                   </span>
                   <div className="opacity-0 scale-y-0 origin-top transition-all ease-out duration-700 group-hover:scale-y-100 group-hover:opacity-100 z-50 w-[200px] flex flex-col gap-4 absolute bg-white shadow-lg mt-2 pt-4 top-4">
-                    <Link to={"/portfolio"} className="border-b border-gray-300 pb-2  px-6">
+                    <Link
+                      to={"/portfolio"}
+                      className="border-b border-gray-300 pb-2  px-6">
                       <span className="ml-0 hover:ml-1 duration-300">
                         Portfolio
                       </span>
                     </Link>
-                    <Link to={"/portfoliodetails"} className="border-b border-gray-300 py-1.5  px-6">
+                    <Link
+                      to={"/portfoliodetails"}
+                      className="border-b border-gray-300 py-1.5  px-6">
                       <span className="ml-0 hover:ml-1 duration-300">
                         Portfolio Details
                       </span>
@@ -342,12 +374,16 @@ const Navbar = () => {
                     News <IoMdArrowDropdown />
                   </span>
                   <div className="opacity-0 scale-y-0 origin-top transition-all ease-out duration-700 group-hover:scale-y-100 group-hover:opacity-100 z-50 w-[200px] flex flex-col gap-4 absolute bg-white shadow-lg mt-2 pt-4 top-4">
-                    <Link to={"/newsgrid"} className="border-b border-gray-300 pb-2  px-6">
+                    <Link
+                      to={"/newsgrid"}
+                      className="border-b border-gray-300 pb-2  px-6">
                       <span className="ml-0 hover:ml-1 duration-300">
                         News Grid
                       </span>
                     </Link>
-                    <Link to={"/newsdetails"} className="border-b border-gray-300 py-1.5  px-6">
+                    <Link
+                      to={"/newsdetails"}
+                      className="border-b border-gray-300 py-1.5  px-6">
                       <span className="ml-0 hover:ml-1 duration-300">
                         NewsDetails
                       </span>
@@ -355,7 +391,33 @@ const Navbar = () => {
                   </div>
                 </div>
                 {/* Contact */}
-                <Link to={"/contact"} className="text-[14px] font-medium">Contact</Link>
+                <Link to={"/contact"} className="text-[14px] font-medium">
+                  Contact
+                </Link>
+                {/* Profile */}
+                
+                {user ? (
+                  <>
+                    <span className="block text-[14px] font-medium">{user.name}</span>
+                    <button
+                      onClick={() => {
+                        localStorage.clear();
+                        window.location.reload();
+                      }}
+                      className="block w-full text-left text-[14px] font-medium text-sm cursor-pointer">
+                      Logout
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Link to="/login" className="block  text-[14px] font-medium">
+                      Login
+                    </Link>
+                    <Link to="/register" className="block  text-[14px] font-medium">
+                      Register
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           </nav>
