@@ -1,12 +1,11 @@
 import React from "react";
 import { FaChevronRight } from "react-icons/fa";
 import { useCart } from "./CartContext";
-
+import Button from "../Components/Small Components/Button";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { items, updateQty, removeItem } = useCart();
-
-
 
   const subtotal = items.reduce((a, i) => a + i.price * i.qty, 0);
   const shipping = 70;
@@ -167,9 +166,11 @@ const Cart = () => {
                 <span>${total}</span>
               </div>
             </div>
-            <button className="w-full mt-6 px-8 bg-[#0f3d2e] text-white py-4">
-              Proceed To Checkout
-            </button>
+            <Link to={"/cartcontext"}>
+              <Button className="w-full mt-6 px-8 bg-[#0f3d2e] text-white py-4">
+                Proceed To Checkout
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

@@ -23,6 +23,7 @@ import NewsGrid from "./Pages/NewsGrid";
 import NewsDetails from "./Pages/NewsDetails";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
+import CartContext from "./Pages/CartContext.jsx";
 
 const App = () => {
   return (
@@ -52,6 +53,7 @@ const App = () => {
             <Route path="/newsdetails" element={<NewsDetails/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register/>}/>
+            <Route path="cartcontext" element={<CartContext/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
