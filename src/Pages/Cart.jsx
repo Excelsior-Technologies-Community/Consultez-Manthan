@@ -1,6 +1,5 @@
 import React from "react";
 import { FaChevronRight } from "react-icons/fa";
-import { useCart } from "./CartContext";
 import Button from "../Components/Small Components/Button";
 import { Link } from "react-router-dom";
 
@@ -166,7 +165,7 @@ const Cart = () => {
                 <span>${total}</span>
               </div>
             </div>
-            <Link to={"/cartcontext"}>
+            <Link to={"/"}>
               <Button className="w-full mt-6 px-8 bg-[#0f3d2e] text-white py-4">
                 Proceed To Checkout
               </Button>

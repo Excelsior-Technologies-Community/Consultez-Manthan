@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import {  ShoppingCart } from "lucide-react";
 import { FaHeart, FaStar } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "./CartContext";
 import toast from "react-hot-toast";
 
 export default function Shop() {
