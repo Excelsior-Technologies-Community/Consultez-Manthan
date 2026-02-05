@@ -86,7 +86,7 @@ const Section6 = () => {
           },
         }}
         className="mt-16">
-        {data.map((item, index) => (
+        {[...data, ...data].map((item, index) => (
           <SwiperSlide key={index}>
             {/* YOUR CARD – NOT TOUCHED */}
             <div className="relative w-[340px] mx-auto rounded-2xl overflow-hidden group">

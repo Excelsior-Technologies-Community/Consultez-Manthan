@@ -1,4 +1,5 @@
 import React from "react";
+import toast from "react-hot-toast";
 import { AiFillMail } from "react-icons/ai";
 import { IoMdArrowDropdown, IoMdCall } from "react-icons/io";
 import { MdLocationPin } from "react-icons/md";
@@ -44,13 +45,13 @@ const Navbar = () => {
             <div className="xl:w-[30%] lg:w-[38%] sm:hidden md:block items-center bg-[#c6d936] py-4">
               <div className="flex gap-2 justify-end  px-17">
                 <div className="flex gap-8 items-center">
-                  <Link className="hover:text-[#0c6460] duration-300">
+                  <Link to={"about"} className="hover:text-[#0c6460] duration-300">
                     About
                   </Link>
-                  <Link className="hover:text-[#0c6460] duration-300">
+                  <Link to={"faqs"} className="hover:text-[#0c6460] duration-300">
                     Faqs
                   </Link>
-                  <Link className="hover:text-[#0c6460] duration-300">
+                  <Link to={"contact"} className="hover:text-[#0c6460] duration-300">
                     Contact
                   </Link>
                 </div>
@@ -75,9 +76,8 @@ const Navbar = () => {
       )}
       {/* navbar  */}
       <div
-        className={`w-full z-50 transition-all duration-500 ease-in-out ${
-          scrolled ? "fixed top-0 left-0 bg-white shadow-md" : "relative"
-        }`}>
+        className={`w-full z-50 transition-all duration-500 ease-in-out ${scrolled ? "fixed top-0 left-0 bg-white shadow-md" : "relative"
+          }`}>
         <div className="md:w-[94%] md:h-[100px] items-center mx-auto  py-2 flex justify-between font-medium text-[16px]">
           {/* logo  */}
           <Link to={"/"}>
@@ -295,6 +295,13 @@ const Navbar = () => {
                           </span>
                         </Link>
                         <Link
+                          to={"/wishlist"}
+                          className="border-b border-gray-300 pb-2  px-8">
+                          <span className="ml-0 hover:ml-1 duration-300">
+                            Wishlist
+                          </span>
+                        </Link>
+                        <Link
                           to={"/cart"}
                           className="border-b border-gray-300 pb-2  px-8">
                           <span className="ml-0 hover:ml-1 duration-300">
@@ -395,14 +402,17 @@ const Navbar = () => {
                   Contact
                 </Link>
                 {/* Profile */}
-                
+
                 {user ? (
                   <>
                     <span className="block text-[14px] font-medium">{user.name}</span>
                     <button
                       onClick={() => {
                         localStorage.clear();
-                        window.location.reload();
+                        toast.success("Logout Successfully");
+                        setTimeout(() => {
+                          window.location.reload();
+                        }, 500);
                       }}
                       className="block w-full text-left text-[14px] font-medium text-sm cursor-pointer">
                       Logout
@@ -439,16 +449,18 @@ const Navbar = () => {
                 {/* <button className="hidden md:block md:py-3 py-3 text-[16px] font-medium px-12 bg-[#1a4137] ml-5 text-white mr-5">
                 Contact Now
               </button> */}
-                <Button
-                  bgColor="#1a4137"
-                  textColor="white"
-                  icon=""
-                  text="Contact Now"
-                  size="large"
-                  rounded="none"
-                  hoverBg="white"
-                  hoverOpacity="0.1"
-                />
+                <Link to="/contact">
+
+                  <Button 
+                    bgColor="#1a4137"
+                    textColor="white"
+                    icon=""
+                    text="Contact Now"
+                    size="large"
+                    rounded="none"
+                    hoverBg="white"
+                    hoverOpacity="0.1"
+                  /></Link>
               </div>
             </div>
           )}

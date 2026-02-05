@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { FaChevronRight } from "react-icons/fa6";
 import location from "../assets/location.svg";
 import phone from "../assets/phone.svg";
 import mail from "../assets/mail.svg";
 import { FaUser, FaEnvelope, FaPen } from "react-icons/fa";
-import Button from "../Components/Small Components/Button";
 import ConFooter from "../Components/ConFooter";
 import Navbar from "../Components/Navbar";
 
@@ -13,6 +13,41 @@ const Contact = () => {
     location: location,
     phone: phone,
     mail: mail,
+  };
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        toast.success(data.message);
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        toast.error(data.message || "Something went wrong");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to send message");
+    }
   };
 
   const data = [
@@ -38,7 +73,7 @@ const Contact = () => {
   return (
     <>
       <div>
-        <Navbar/>
+        <Navbar />
         {/* section 1  */}
         <div
           className="w-full overflow-hidden relative min-h-[200px] md:min-h-[300px] lg:min-h-[400px] bg-cover bg-center bg-no-repeat"
@@ -150,14 +185,18 @@ const Contact = () => {
                 marked *
               </p>
 
-              <form className="space-y-18">
+              <form className="space-y-18" onSubmit={handleSubmit}>
                 {/* Name */}
                 <div className="flex items-center gap-4 border-b pb-3">
                   <FaUser className="text-gray-400" />
                   <input
                     type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     placeholder="Your Name*"
                     className="w-full outline-none text-gray-700"
+                    required
                   />
                 </div>
 
@@ -166,8 +205,12 @@ const Contact = () => {
                   <FaEnvelope className="text-gray-400" />
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="Email Address*"
                     className="w-full outline-none text-gray-700"
+                    required
                   />
                 </div>
 
@@ -176,17 +219,26 @@ const Contact = () => {
                   <FaPen className="text-gray-400 mt-2" />
                   <textarea
                     rows="4"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     placeholder="Enter Your Message here"
-                    className="w-full outline-none resize-none text-gray-700"></textarea>
+                    className="w-full outline-none resize-none text-gray-700"
+                    required></textarea>
                 </div>
 
                 {/* Button */}
-                <Button bgColor="#1a4137" text="Get In Touch" textColor="white" icon="" rounded="none" size="large" hoverBg="white" hoverOpacity="0.11"/>
+                <button
+                  type="submit"
+                  className="bg-[#1a4137] text-white text-lg font-medium px-8 py-3 hover:bg-white hover:text-[#1a4137] transition-all duration-300 border border-[#1a4137]"
+                >
+                  Get In Touch
+                </button>
               </form>
             </div>
           </div>
         </section>
-        <ConFooter/>
+        <ConFooter />
       </div>
     </>
   );

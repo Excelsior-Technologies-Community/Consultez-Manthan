@@ -1,6 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { products } from "../Components/data";
+import { useNavigate } from "react-router-dom";
+import { useCart } from "../Context/CartContext.jsx";
+import { useWishlist } from "../Context/WishlistContext.jsx";
 import { Heart, ShoppingCart } from "lucide-react";
 import { FaChevronRight, FaStar } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
@@ -16,6 +19,20 @@ const filters = [
 
 const ProductSidebar = () => {
   const [activeFilter, setActiveFilter] = useState("all");
+  const navigate = useNavigate();
+  const { addToCart } = useCart();
+  const { addToWishlist } = useWishlist();
+
+  const handleAddToCart = (product) => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      navigate("/login", { state: { from: "productsidebar" } });
+      return;
+    }
+
+    addToCart(product);
+  };
 
   const filteredProducts =
     activeFilter === "all"
@@ -184,11 +201,10 @@ const ProductSidebar = () => {
                     key={f.value}
                     onClick={() => setActiveFilter(f.value)}
                     className={`cursor-pointer font-medium pb-2 border-b-2 transition mb-6 mt-2
-              ${
-                activeFilter === f.value
-                  ? " bg-[#0b3231] text-white px-2"
-                  : "border-transparent text-gray-500"
-              }`}>
+              ${activeFilter === f.value
+                        ? " bg-[#0b3231] text-white px-2"
+                        : "border-transparent text-gray-500"
+                      }`}>
                     {f.label}
                   </li>
                 ))}
@@ -210,10 +226,14 @@ const ProductSidebar = () => {
 
                       {/* Hover Icons */}
                       <div className="absolute right-4 top-4 flex flex-col gap-3 opacity-0 group-hover:opacity-100 transition">
-                        <button className="w-10 h-10 rounded-full bg-[#0b3231] shadow flex items-center justify-center hover:bg-[#c6d936] text-white hover:text-[#0b3231] duration-300 ">
+                        <button
+                          onClick={() => addToWishlist({ ...product, _id: product.id })}
+                          className="w-10 h-10 rounded-full bg-[#0b3231] shadow flex items-center justify-center hover:bg-[#c6d936] text-white hover:text-[#0b3231] duration-300 ">
                           <Heart size={18} />
                         </button>
-                        <button className="w-10 h-10 rounded-full bg-[#0b3231] shadow flex items-center justify-center hover:bg-[#c6d936] text-white hover:text-[#0b3231] duration-300">
+                        <button
+                          onClick={() => handleAddToCart({ ...product, _id: product.id })}
+                          className="w-10 h-10 rounded-full bg-[#0b3231] shadow flex items-center justify-center hover:bg-[#c6d936] text-white hover:text-[#0b3231] duration-300">
                           <ShoppingCart size={18} />
                         </button>
                       </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
@@ -24,11 +25,12 @@ export default function Register() {
     });
 
     if (!res.ok) {
-      alert("Registration failed");
+      toast.error("Registration failed");
       return;
     }
 
-    navigate("/login");
+    toast.success("Registered Successfully");
+    navigate("/");
   };
 
   return (

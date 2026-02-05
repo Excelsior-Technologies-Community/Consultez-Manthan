@@ -42,7 +42,7 @@ const Section10 = () => {
           className="w-full z-10"
           loop={true}
         >
-          {data.map((item, index) => (
+          {[...data, ...data, ...data].map((item, index) => (
             <SwiperSlide key={index}>
               <div className="flex flex-col md:flex-row items-center lg:gap-3 gap-2 group">
 

@@ -75,14 +75,14 @@ const Section11 = () => {
             slidesPerView={3}
             spaceBetween={30}
             pagination={{ clickable: false }}
-            loop={Infinity}
+            loop={true}
             breakpoints={{
               0: { slidesPerView: 1 },
               768: { slidesPerView: 2 },
               1280: { slidesPerView: 3 },
             }}
             className="pb-20">
-            {data.map((item, index) => (
+            {[...data, ...data].map((item, index) => (
               <SwiperSlide key={index}>
                 <div className="h-[300px] md:h-[520px] relative group overflow-visible">
                   <div className="w-full overflow-hidden">

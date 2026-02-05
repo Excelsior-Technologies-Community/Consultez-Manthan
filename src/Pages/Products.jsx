@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
-import {  ShoppingCart } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import { FaHeart, FaStar } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
+import { useCart } from "../Context/CartContext.jsx";
+import { useWishlist } from "../Context/WishlistContext.jsx";
 
 export default function Shop() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [activeCategory, setActiveCategory] = useState("all");
   const navigate = useNavigate();
+  const { addToCart } = useCart();
+  const { addToWishlist } = useWishlist();
 
   const handleAddToCart = (product) => {
     const token = localStorage.getItem("token");
@@ -19,10 +22,8 @@ export default function Shop() {
     }
 
     addToCart(product);
-    toast.success(`${product.title} added to cart`);
+    // toast handled in context
   };
-
-  const { addToCart } = useCart();
 
   // 🔹 Fetch categories (filters)
   useEffect(() => {
@@ -87,6 +88,7 @@ export default function Shop() {
                        group-hover:opacity-100 group-hover:translate-x-0
                        transition-all duration-300">
                   <button
+                    onClick={() => addToWishlist(product)}
                     className="w-10 h-10 rounded-full duration-300 bg-[#0b3231]
                          text-white flex items-center justify-center
                          hover:bg-[#c6d936] hover:text-[#0b3231]">

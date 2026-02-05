@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useCart } from "../Context/CartContext.jsx";
 import { FaChevronRight } from "react-icons/fa6";
 
 const methods = [
@@ -63,6 +64,10 @@ const methods = [
 ];
 
 const Checkout = () => {
+  const { items } = useCart();
+  const subtotal = items.reduce((a, i) => a + i.price * i.qty, 0);
+  const shipping = 70;
+  const total = subtotal + shipping;
   const [active, setActive] = useState("card");
 
   return (
@@ -223,64 +228,44 @@ const Checkout = () => {
             <div className="p-4">Total</div>
           </div>
 
-          {/* Row 1 */}
-          <div className="grid grid-cols-3 border-b border-gray-200 bg-[#f5f4f5]">
-            <div className="p-4">
-              <img
-                src="https://html.kodesolution.com/2025/consultez-html-v2/images/resource/products/1.jpg"
-                alt="product"
-                className="w-17"
-              />
+          {/* Dynamic Items */}
+          {items.map((item, index) => (
+            <div key={item._id} className={`grid grid-cols-3 border-b border-gray-200 ${index % 2 === 0 ? "bg-[#f5f4f5]" : ""}`}>
+              <div className="p-4">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-17"
+                />
+              </div>
+              <div className="p-4">
+                {item.title} x {item.qty}
+                <br />
+                <span className="text-sm text-gray-500">Size: {item.size}</span>
+              </div>
+              <div className="p-4">${(item.price * item.qty).toFixed(2)}</div>
             </div>
-            <div className="p-4">Headphone x 2</div>
-            <div className="p-4">$36.00</div>
-          </div>
-
-          {/* Row 2 */}
-          <div className="grid grid-cols-3 border-b border-gray-200">
-            <div className="p-4">
-              <img
-                src="https://html.kodesolution.com/2025/consultez-html-v2/images/resource/products/2.jpg"
-                alt="product"
-                className="w-17"
-              />
-            </div>
-            <div className="p-4">Lagage x 3</div>
-            <div className="p-4">$115.00</div>
-          </div>
-
-          {/* Row 3 */}
-          <div className="grid grid-cols-3 border-b border-gray-200 bg-[#f5f4f5]">
-            <div className="p-4">
-              <img
-                src="https://html.kodesolution.com/2025/consultez-html-v2/images/resource/products/3.jpg"
-                alt="product"
-                className="w-17"
-              />
-            </div>
-            <div className="p-4">Watch x 1</div>
-            <div className="p-4">$68.00</div>
-          </div>
+          ))}
 
           {/* Subtotal */}
           <div className="grid grid-cols-3 py-4.5 border-b border-gray-200">
             <div className="p-4 font-medium">Cart Subtotal</div>
             <div />
-            <div className="p-4">$180.00</div>
+            <div className="p-4">${subtotal.toFixed(2)}</div>
           </div>
 
           {/* Shipping */}
           <div className="grid grid-cols-3 border-b py-4.5 border-gray-200 bg-[#f5f4f5]">
             <div className="p-4 font-medium">Shipping and Handling</div>
             <div />
-            <div className="p-4">Free Shipping</div>
+            <div className="p-4">${shipping.toFixed(2)}</div>
           </div>
 
           {/* Total */}
           <div className="grid grid-cols-3 py-4.5">
             <div className="p-4 font-semibold">Order Total</div>
             <div />
-            <div className="p-4 font-semibold">$250.00</div>
+            <div className="p-4 font-semibold">${total.toFixed(2)}</div>
           </div>
         </div>
       </section>
@@ -297,9 +282,8 @@ const Checkout = () => {
                 className="w-full flex justify-between text-gray-600 text-xl items-center px-6 py-5 bg-[#f4f5f4] text-left font-medium shadow">
                 {method.title}
                 <span
-                  className={`transform transition ${
-                    active === method.id ? "rotate-180" : ""
-                  }`}>
+                  className={`transform transition ${active === method.id ? "rotate-180" : ""
+                    }`}>
                   ▼
                 </span>
               </button>

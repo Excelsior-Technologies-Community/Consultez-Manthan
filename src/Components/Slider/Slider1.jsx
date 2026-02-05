@@ -57,7 +57,7 @@ const Slider1 = () => {
       }}
       className="mySwiper"
     >
-      {serviceData.map((item) => (
+      {[...serviceData, ...serviceData, ...serviceData].map((item) => (
         <SwiperSlide key={item.id}>
           <div
             className="

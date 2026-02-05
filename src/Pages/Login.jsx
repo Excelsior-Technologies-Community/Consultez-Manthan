@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
 export default function Login() {
@@ -25,12 +26,14 @@ export default function Login() {
     const data = await res.json();
 
     if (!res.ok) {
-      alert(data.message);
+      toast.error(data.message);
       return;
     }
 
     localStorage.setItem("token", data.token);
     localStorage.setItem("user", JSON.stringify(data.user));
+
+    toast.success("Login Successful");
 
     // ✅ redirect AFTER login
     navigate(redirectTo);
@@ -50,6 +53,7 @@ export default function Login() {
               placeholder="you@example.com"
               onChange={(e) => setEmail(e.target.value)}
               required
+              autoComplete="email"
             />
           </div>
 
@@ -61,6 +65,7 @@ export default function Login() {
               placeholder="••••••••"
               onChange={(e) => setPassword(e.target.value)}
               required
+              autoComplete="current-password"
             />
           </div>
 

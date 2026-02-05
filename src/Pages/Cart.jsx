@@ -1,10 +1,13 @@
 import React from "react";
 import { FaChevronRight } from "react-icons/fa";
-import Button from "../Components/Small Components/Button";
 import { Link } from "react-router-dom";
+import { useCart } from "../Context/CartContext.jsx";
+
 
 const Cart = () => {
-  const { items, updateQty, removeItem } = useCart();
+  const { items, updateQty, removeFromCart } = useCart();
+
+
 
   const subtotal = items.reduce((a, i) => a + i.price * i.qty, 0);
   const shipping = 70;
@@ -14,17 +17,29 @@ const Cart = () => {
     <>
       {/* HERO */}
       <div
-        className="w-full relative min-h-[260px] bg-cover bg-center"
+        className="w-full overflow-hidden relative min-h-[200px] md:min-h-[300px] lg:min-h-[400px] bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage:
             "url('https://html.kodesolution.com/2025/consultez-html-v2/images/background/page-title-bg.jpg')",
         }}>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0b3231] to-transparent px-6 md:px-10 py-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-white">Cart</h1>
-          <p className="flex items-center gap-2 text-[#c6d936] mt-4">
-            Home <FaChevronRight /> <span className="text-white">Cart</span>
-          </p>
+        <div className="w-full h-full bg-gradient-to-r from-[#0b3231] to-transparent absolute lg:pl-26 lg:pt-26 pl-4 pt-5 md:pl-10 md:pt-10 z-10">
+          <span className="text-3xl md:text-4xl lg:text-6xl text-white font-bold pt pb-5 pt-10 block">
+            Cart
+          </span>
+          <h1 className="flex gap-2 items-center text-[#c6d936] text-sm md:text-base font-semibold py-2">
+            Home{" "}
+            <span className="text-white flex items-center gap-2">
+              <FaChevronRight />
+              Cart
+            </span>
+          </h1>
         </div>
+        {/* square box img  */}
+        <img
+          src="https://html.kodesolution.com/2025/consultez-html-v2/images/background/page-title-pattern.png"
+          alt=""
+          className="absolute z-20 -right-10 md:-right-20 top-0 w-32 md:w-auto hidden md:block"
+        />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 md:px-10 py-12 space-y-14">
@@ -43,19 +58,19 @@ const Cart = () => {
             </thead>
             <tbody>
               {items.map((item) => (
-                <tr key={item.id} className="border border-gray-300 bg-gray-50">
+                <tr key={item._id} className="border border-gray-300 bg-gray-50">
                   <td className="p-3">
                     <button
-                      onClick={() => removeItem(item.id)}
-                      className="w-6 h-6 rounded-full bg-gray-400 text-white text-xs">
+                      onClick={() => removeFromCart(item._id)}
+                      className="w-6 h-6 rounded-full bg-gray-400 text-white text-xs hover:bg-red-500">
                       ✕
                     </button>
                   </td>
                   <td className="p-3">
-                    <img src={item.img} className="w-20 h-20 object-cover" />
+                    <img src={item.image} className="w-20 h-20 object-cover" />
                   </td>
                   <td className="p-3">
-                    <p className="font-medium">{item.name}</p>
+                    <p className="font-medium">{item.title}</p>
                     <p className="text-sm text-gray-500">Size: {item.size}</p>
                   </td>
                   <td className="p-3">${item.price}</td>
@@ -66,12 +81,12 @@ const Cart = () => {
                       </div>
                       <div className="flex flex-col w-6 ">
                         <button
-                          onClick={() => updateQty(item.id, "inc")}
+                          onClick={() => updateQty(item._id, "inc")}
                           className="bg-[#0f3d2e] text-white h-1/2">
                           +
                         </button>
                         <button
-                          onClick={() => updateQty(item.id, "dec")}
+                          onClick={() => updateQty(item._id, "dec")}
                           className=" bg-[#0f3d2e] text-white border-t h-1/2">
                           −
                         </button>
@@ -90,22 +105,22 @@ const Cart = () => {
           {items.map((item) => (
             <div key={item.id} className="border p-4 rounded space-y-4">
               <div className="flex gap-4">
-                <img src={item.img} className="w-24 h-24 object-cover" />
+                <img src={item.image} className="w-24 h-24 object-cover" />
                 <div className="flex-1">
-                  <p className="font-medium">{item.name}</p>
+                  <p className="font-medium">{item.title}</p>
                   <p className="text-sm text-gray-500">Size: {item.size}</p>
                   <p className="mt-2 font-semibold">${item.price * item.qty}</p>
                 </div>
                 <button
-                  onClick={() => removeItem(item.id)}
-                  className="text-gray-400">
+                  onClick={() => removeFromCart(item._id)}
+                  className="w-6 h-6 rounded-full bg-gray-400 text-white text-xs">
                   ✕
                 </button>
               </div>
 
               <div className="flex justify-between items-center">
                 <span>Quantity</span>
-                <div className="flex border w-20 h-15">
+                <div className="flex border w-20 h-20">
                   <div className="flex-1 flex items-center justify-center">
                     {item.qty}
                   </div>
@@ -165,12 +180,13 @@ const Cart = () => {
                 <span>${total}</span>
               </div>
             </div>
-            <Link to={"/"}>
-              <Button className="w-full mt-6 px-8 bg-[#0f3d2e] text-white py-4">
+            <Link to="/checkout">
+              <button className="w-full mt-6 px-8 bg-[#0f3d2e] text-white py-4">
                 Proceed To Checkout
-              </Button>
+              </button>
             </Link>
           </div>
+
         </div>
       </div>
     </>

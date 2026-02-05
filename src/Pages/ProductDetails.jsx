@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import { useCart } from "../Context/CartContext.jsx";
+import { useWishlist } from "../Context/WishlistContext.jsx";
 import { FaShoppingCart, FaStar } from "react-icons/fa";
 import { Heart } from "lucide-react";
 import {
@@ -30,6 +32,16 @@ const ProductDetails = () => {
   const [activeImg, setActiveImg] = useState(images[0]);
   const [qty, setQty] = useState(1);
   const [tab, setTab] = useState("description");
+  const { addToCart } = useCart();
+  const { addToWishlist } = useWishlist();
+
+  const product = {
+    _id: "backpack-detail-1",
+    title: "Backpack",
+    price: 76,
+    image: activeImg,
+    size: "Standard"
+  };
 
   return (
     <>
@@ -73,9 +85,8 @@ const ProductDetails = () => {
                   key={i}
                   src={img}
                   onClick={() => setActiveImg(img)}
-                  className={`w-15 h-15 llap:w-25 llap:h-25 object-cover cursor-pointer ${
-                    activeImg === img ? "border-[#0b3231]" : ""
-                  }`}
+                  className={`w-15 h-15 llap:w-25 llap:h-25 object-cover cursor-pointer ${activeImg === img ? "border-[#0b3231]" : ""
+                    }`}
                 />
               ))}
             </div>
@@ -126,10 +137,14 @@ const ProductDetails = () => {
 
             {/* ACTIONS */}
             <div className="flex gap-4">
-              <button className=" text-[#0b3231] hover:text-gray-400 duration-300 pr-6 py-2 text-xl">
+              <button
+                onClick={() => addToCart(product)}
+                className=" text-[#0b3231] hover:text-gray-400 duration-300 pr-6 py-2 text-xl">
                 Add to Cart
               </button>
-              <button className="text-[#0b3231] hover:text-gray-400 duration-300 pr-6 py-2 text-xl">
+              <button
+                onClick={() => addToWishlist(product)}
+                className="text-[#0b3231] hover:text-gray-400 duration-300 pr-6 py-2 text-xl">
                 Add to Wishlist
               </button>
             </div>
@@ -151,20 +166,18 @@ const ProductDetails = () => {
           <div className="flex gap-4 justify-center my-5">
             <button
               onClick={() => setTab("description")}
-              className={`px-6 py-3 text-xl ${
-                tab === "description"
-                  ? "bg-[#0b3231] text-white"
-                  : "border bg-white"
-              }`}>
+              className={`px-6 py-3 text-xl ${tab === "description"
+                ? "bg-[#0b3231] text-white"
+                : "border bg-white"
+                }`}>
               Description
             </button>
             <button
               onClick={() => setTab("reviews")}
-              className={`px-6 py-3 text-xl ${
-                tab === "reviews"
-                  ? "bg-[#0b3231] text-white"
-                  : "border bg-white"
-              }`}>
+              className={`px-6 py-3 text-xl ${tab === "reviews"
+                ? "bg-[#0b3231] text-white"
+                : "border bg-white"
+                }`}>
               Reviews
             </button>
           </div>
